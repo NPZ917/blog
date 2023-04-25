@@ -3,16 +3,16 @@
 layout: home
 
 hero:
-  name: '哦哈哈哈哈哈'
+  name: '不知道写啥，不知道写啥'
   text: '😄😄😄'
   tagline: coding
   image:
-    src: https://img.mp.sohu.com/upload/20170715/69d5e6ae441f4623b350d35f0f88822b_th.png
+    src: /logo.png
     alt: logo
   actions:
     - theme: brand
       text: Getting stard
-      link: /vue/core
+      link: /fe/vue/core
     # - theme: alt
     #   text: API Examples
     #   link: /api-examples
@@ -21,12 +21,12 @@ hero:
     #   link: /vue/core
 features:
   - icon: ⚡️
-    title: todo
-    details: todo
+    title: 陈平安
+    # details: todo
   - icon: 🖖
-    title: todo
-    details: todo
+    title: 大道就在脚下
+    # details: todo
   - icon: 🛠️
-    title: todo
-    details: todo
+    title: 走！！！！
+    # details: todo
 ---
