@@ -5,6 +5,16 @@ export default defineConfig({
   title: 'N',
   description: 'Blog',
   base: '/blog/',
+  head: [
+    [
+      'link',
+      {
+        rel: 'shortcut icon',
+        href: '/logo.png',
+        crossorigin: '',
+      },
+    ],
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
