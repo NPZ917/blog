@@ -10,7 +10,7 @@ export default defineConfig({
       'link',
       {
         rel: 'shortcut icon',
-        href: '/logo.png',
+        href: 'https://img.syt5.com/2020/1126/20201126030956380.jpg',
         crossorigin: '',
       },
     ],
