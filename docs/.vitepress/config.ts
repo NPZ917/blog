@@ -76,7 +76,7 @@ export default defineConfig({
             { text: '3.x', link: '/fe/vue/3.x.md' },
             { text: 'Vue Router', link: '/fe/vue/vue-router' },
             { text: 'Vuex', link: '/fe/vue/vuex' },
-            { text: 'Pinia', link: '/fe/vue/Pinia' },
+            { text: 'Pinia', link: '/fe/vue/pinia' },
           ],
         },
         {
