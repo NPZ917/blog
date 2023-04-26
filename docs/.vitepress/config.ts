@@ -5,6 +5,10 @@ export default defineConfig({
   title: 'N',
   description: 'Blog',
   base: '/blog/',
+  markdown: {
+    // 代码块行号
+    lineNumbers: true,
+  },
   head: [
     [
       'link',
@@ -22,11 +26,11 @@ export default defineConfig({
       {
         text: '前端',
         items: [
-          { text: 'HTML/CSS', link: '/fe/html-css/html' },
+          { text: 'HTML/CSS', link: '/fe/html_css/html' },
           { text: 'JavaScript', link: '/fe/js/core' },
-          { text: 'Vue', link: '/fe/vue/core' },
+          { text: 'Vue', link: '/fe/vue/2.x.md' },
           { text: 'React', link: '/fe/react/core' },
-          { text: '构建工具', link: '/fe/build/webpack' },
+          { text: '模块化', link: '/fe/module/' },
           { text: '跨端', link: '/fe/multiterminal/uniapp' },
           { text: 'WX', link: '/fe/wx/wx' },
           { text: 'Node', link: '/fe/node/node' },
@@ -37,8 +41,9 @@ export default defineConfig({
         text: '软工理论',
         items: [{ text: '计算机网络', link: '/sem/network' }],
       },
-      { text: '日常笔记', link: '/daily-notes/index' },
-      { text: 'Bug汇总', link: '/bug/index' },
+      { text: '日常随笔', link: '/daily_notes/' },
+      { text: '踩坑汇总', link: '/bug/' },
+      { text: '其他', link: '/other/' },
     ],
     sidebar: {
       '/fe/': [
@@ -46,10 +51,10 @@ export default defineConfig({
           text: 'HTML/CSS',
           collapsed: true,
           items: [
-            { text: 'HTML', link: '/fe/html-css/html' },
-            { text: 'CSS', link: '/fe/html-css/css' },
-            { text: 'SASS', link: '/fe/html-css/sass' },
-            { text: 'LESS', link: '/fe/html-css/less' },
+            { text: 'HTML', link: '/fe/html_css/html' },
+            { text: 'CSS', link: '/fe/html_css/css' },
+            { text: 'SASS', link: '/fe/html_css/sass' },
+            { text: 'LESS', link: '/fe/html_css/less' },
           ],
         },
         {
@@ -67,7 +72,8 @@ export default defineConfig({
           text: 'Vue',
           collapsed: true,
           items: [
-            { text: 'Core', link: '/fe/vue/core' },
+            { text: '2.x', link: '/fe/vue/2.x.md' },
+            { text: '3.x', link: '/fe/vue/3.x.md' },
             { text: 'Vue Router', link: '/fe/vue/vue-router' },
             { text: 'Vuex', link: '/fe/vue/vuex' },
             { text: 'Pinia', link: '/fe/vue/Pinia' },
@@ -84,14 +90,15 @@ export default defineConfig({
           ],
         },
         {
-          text: '构建工具',
+          text: '模块化',
           collapsed: false,
           items: [
-            { text: 'webpack', link: '/fe/build/webpack' },
-            { text: 'Vite', link: '/fe/build/vite' },
-            { text: 'Gulp', link: '/fe/build/gulp' },
-            { text: 'rollup', link: '/fe/build/rollup' },
-            { text: 'esbuild', link: '/fe/build/esbuild' },
+            { text: '初识', link: '/fe/module' },
+            { text: 'webpack', link: '/fe/module/webpack' },
+            { text: 'Vite', link: '/fe/module/vite' },
+            { text: 'Gulp', link: '/fe/module/gulp' },
+            { text: 'rollup', link: '/fe/module/rollup' },
+            { text: 'esbuild', link: '/fe/module/esbuild' },
           ],
         },
         {
@@ -115,6 +122,9 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2023-present Evan You',
     },
+
+    // 标题深度，[2,3] 表示提取 h2 和 h3 标题
+    outline: 'deep',
 
     search: {
       provider: 'local',
