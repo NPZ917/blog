@@ -42,8 +42,8 @@ export default defineConfig({
         items: [{ text: '计算机网络', link: '/sem/network' }],
       },
       { text: '日常随笔', link: '/daily_notes/' },
-      { text: '踩坑汇总', link: '/bug/' },
-      { text: '其他', link: '/other/' },
+      { text: '踩坑汇总', link: '/bug/node/' },
+      { text: '其他', link: '/other/upload' },
     ],
     sidebar: {
       '/fe/': [
@@ -116,11 +116,13 @@ export default defineConfig({
         { text: '可视化', link: '/fe/visualization/visualization' },
       ],
       '/sem/': [{ text: '计算机网络', link: '/sem/network' }],
+      '/other/': [{ text: '文件上传', link: '/other/upload' }],
+      '/bug/': [{ text: 'Node', link: '/bug/node/' }],
     },
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2023-present Evan You',
+      copyright: 'Copyright © 2023-present N',
     },
 
     // 标题深度，[2,3] 表示提取 h2 和 h3 标题
