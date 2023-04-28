@@ -87,6 +87,7 @@ export default defineConfig({
             { text: 'Rect Router', link: '/fe/react/react-router' },
             { text: 'Redux', link: '/fe/react/redux' },
             { text: 'Recat Redux', link: '/fe/react/react-redux' },
+            { text: 'Mobx', link: '/fe/react/mobx' },
           ],
         },
         {

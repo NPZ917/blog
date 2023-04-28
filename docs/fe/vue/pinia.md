@@ -31,16 +31,19 @@ import { computed, ref } from 'vue'
 
 // 选项式
 export const useCountStore = defineStore('count', {
+  // state
   state: () => {
     return {
       count: 0,
     }
   },
 
+  // getters
   getters: {
     double: (state) => state.count * 2,
   },
 
+  // actions
   actions: {
     increment() {
       this.count++
@@ -49,10 +52,15 @@ export const useCountStore = defineStore('count', {
 })
 
 export const useCounterStore = defineStore('counter', () => {
+  // state
   const counter = ref(0)
+
+  //getters
   const doubleCounter = computed(() => {
     return counter.value * 2
   })
+
+  // actions
   function increment() {
     counter.value++
   }
