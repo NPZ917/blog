@@ -26,15 +26,15 @@ export default defineConfig({
       {
         text: '前端',
         items: [
-          { text: 'HTML/CSS', link: '/fe/html_css/html' },
+          // { text: 'HTML/CSS', link: '/fe/html_css/html' },
           { text: 'JavaScript', link: '/fe/js/core' },
           { text: 'Vue', link: '/fe/vue/2.x.md' },
           { text: 'React', link: '/fe/react/core' },
           { text: '模块化', link: '/fe/module/' },
-          { text: '跨端', link: '/fe/multiterminal/uniapp' },
+          // { text: '跨端', link: '/fe/multiterminal/uniapp' },
           { text: 'WX', link: '/fe/wx/wx' },
-          { text: 'Node', link: '/fe/node/node' },
-          { text: '可视化', link: '/fe/visualization/visualization' },
+          // { text: 'Node', link: '/fe/node/node' },
+          // { text: '可视化', link: '/fe/visualization/visualization' },
         ],
       },
       {
@@ -47,16 +47,16 @@ export default defineConfig({
     ],
     sidebar: {
       '/fe/': [
-        {
-          text: 'HTML/CSS',
-          collapsed: true,
-          items: [
-            { text: 'HTML', link: '/fe/html_css/html' },
-            { text: 'CSS', link: '/fe/html_css/css' },
-            { text: 'SASS', link: '/fe/html_css/sass' },
-            { text: 'LESS', link: '/fe/html_css/less' },
-          ],
-        },
+        // {
+        //   text: 'HTML/CSS',
+        //   collapsed: true,
+        //   items: [
+        //     { text: 'HTML', link: '/fe/html_css/html' },
+        //     { text: 'CSS', link: '/fe/html_css/css' },
+        //     { text: 'SASS', link: '/fe/html_css/sass' },
+        //     { text: 'LESS', link: '/fe/html_css/less' },
+        //   ],
+        // },
         {
           text: 'JavaScript',
           collapsed: true,
@@ -94,27 +94,27 @@ export default defineConfig({
           text: '模块化',
           collapsed: false,
           items: [
-            { text: '初识', link: '/fe/module' },
-            { text: 'webpack', link: '/fe/module/webpack' },
-            { text: 'Vite', link: '/fe/module/vite' },
-            { text: 'Gulp', link: '/fe/module/gulp' },
-            { text: 'rollup', link: '/fe/module/rollup' },
-            { text: 'esbuild', link: '/fe/module/esbuild' },
+            { text: '初识', link: '/fe/module/' },
+            // { text: 'webpack', link: '/fe/module/webpack' },
+            // { text: 'Vite', link: '/fe/module/vite' },
+            // { text: 'Gulp', link: '/fe/module/gulp' },
+            // { text: 'rollup', link: '/fe/module/rollup' },
+            // { text: 'esbuild', link: '/fe/module/esbuild' },
           ],
         },
-        {
-          text: '跨端',
-          collapsed: false,
-          items: [
-            { text: 'uniapp', link: '/fe/multiterminal/uniapp' },
-            { text: 'Taro', link: '/fe/multiterminal/taro' },
-            { text: 'React Native', link: '/fe/multiterminal/rn' },
-            { text: 'Flutter', link: '/fe/multiterminal/flutter' },
-          ],
-        },
+        // {
+        //   text: '跨端',
+        //   collapsed: false,
+        //   items: [
+        //     { text: 'uniapp', link: '/fe/multiterminal/uniapp' },
+        //     { text: 'Taro', link: '/fe/multiterminal/taro' },
+        //     { text: 'React Native', link: '/fe/multiterminal/rn' },
+        //     { text: 'Flutter', link: '/fe/multiterminal/flutter' },
+        //   ],
+        // },
         { text: '微信小程序', link: '/fe/wx/wx' },
-        { text: 'Node', link: '/fe/node/node' },
-        { text: '可视化', link: '/fe/visualization/visualization' },
+        // { text: 'Node', link: '/fe/node/node' },
+        // { text: '可视化', link: '/fe/visualization/visualization' },
       ],
       '/sem/': [{ text: '计算机网络', link: '/sem/network' }],
       '/other/': [{ text: '文件上传', link: '/other/upload' }],
