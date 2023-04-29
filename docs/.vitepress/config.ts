@@ -26,7 +26,7 @@ export default defineConfig({
       {
         text: '前端',
         items: [
-          // { text: 'HTML/CSS', link: '/fe/html_css/html' },
+          { text: 'HTML/CSS', link: '/fe/html_css/html' },
           { text: 'JavaScript', link: '/fe/js/core' },
           { text: 'Vue', link: '/fe/vue/2.x.md' },
           { text: 'React', link: '/fe/react/core' },
@@ -47,16 +47,16 @@ export default defineConfig({
     ],
     sidebar: {
       '/fe/': [
-        // {
-        //   text: 'HTML/CSS',
-        //   collapsed: true,
-        //   items: [
-        //     { text: 'HTML', link: '/fe/html_css/html' },
-        //     { text: 'CSS', link: '/fe/html_css/css' },
-        //     { text: 'SASS', link: '/fe/html_css/sass' },
-        //     { text: 'LESS', link: '/fe/html_css/less' },
-        //   ],
-        // },
+        {
+          text: 'HTML/CSS',
+          collapsed: true,
+          items: [
+            { text: 'HTML', link: '/fe/html_css/html' },
+            { text: 'CSS', link: '/fe/html_css/css' },
+            // { text: 'SASS', link: '/fe/html_css/sass' },
+            // { text: 'LESS', link: '/fe/html_css/less' },
+          ],
+        },
         {
           text: 'JavaScript',
           collapsed: true,
