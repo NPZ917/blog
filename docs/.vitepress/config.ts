@@ -95,7 +95,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '初识', link: '/fe/module/' },
-            // { text: 'webpack', link: '/fe/module/webpack' },
+            { text: 'webpack', link: '/fe/module/webpack' },
             // { text: 'Vite', link: '/fe/module/vite' },
             // { text: 'Gulp', link: '/fe/module/gulp' },
             // { text: 'rollup', link: '/fe/module/rollup' },
