@@ -116,7 +116,10 @@ export default defineConfig({
         {
           text: 'Node',
           collapsed: false,
-          items: [{ text: 'core', link: '/fe/node/core' }],
+          items: [
+            { text: 'core', link: '/fe/node/core' },
+            { text: 'express', link: '/fe/node/express' },
+          ],
         },
         // { text: '可视化', link: '/fe/visualization/visualization' },
       ],
