@@ -9,6 +9,7 @@ this[kHandle] = new _Hash(algorithm, xofLen);
 解决
 - 修改package.json，命令前加入`SET NODE_OPTIONS=--openssl-legacy-provider`
 - 回退版本 => 16
+- nvm (下载连接)[https://github.com/coreybutler/nvm-windows/releases]
 
 1.package.json, 不太一劳永逸，随着时间变化，legacy 可能为 Openssl3.0
 ```js
@@ -19,3 +20,4 @@ this[kHandle] = new _Hash(algorithm, xofLen);
 ```
 
 2.回退到16版本
+3.Node中 nvm
