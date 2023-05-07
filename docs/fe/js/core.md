@@ -577,8 +577,6 @@ console.log(original.b === copy.b); // false
 ```
 ## 基础算法
 
-## 
-
 ## 事件流
 1. 捕获阶段
 2. 目标阶段
@@ -597,3 +595,10 @@ console.log(original.b === copy.b); // false
 - 元素尺寸改变——边距、填充、边框、宽度和高度;
 - 浏览器窗口尺寸改变——resize 事件发生时
 - 计算 offsetWidth 和 offsetHeight 属性
+
+## async/defer preload/prefetch 
+没有 async/defer 属性的 js 会阻塞 html 解析  
+- async  异步加载，脚本加载完成后，立即执行js脚本
+- defer  异步加载，脚本的执行会等到HTML解析完成之后  
+- preload 预加载，立即加载(不会执行) 配合 as 使用，
+- prefetch 预加载，空闲时间加载(不会执行) 配合 as 使用，

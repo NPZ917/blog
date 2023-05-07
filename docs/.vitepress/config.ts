@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -124,7 +124,10 @@ export default defineConfig({
         // { text: '可视化', link: '/fe/visualization/visualization' },
       ],
       '/sem/': [{ text: '计算机网络', link: '/sem/network' }],
-      '/other/': [{ text: '文件上传', link: '/other/upload' }],
+      '/other/': [
+        { text: '文件上传', link: '/other/upload' },
+        { text: '性能优化', link: '/other/optimize' },
+      ],
       '/bug/': [{ text: 'Node', link: '/bug/node/' }],
     },
 
@@ -142,4 +145,4 @@ export default defineConfig({
 
     socialLinks: [{ icon: 'github', link: 'https://github.com' }],
   },
-})
+});
