@@ -81,7 +81,7 @@ export default defineConfig({
         },
         {
           text: 'React',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Core', link: '/fe/react/core' },
             { text: 'Rect Router', link: '/fe/react/react-router' },
@@ -92,7 +92,7 @@ export default defineConfig({
         },
         {
           text: '模块化',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: '初识', link: '/fe/module/' },
             { text: 'webpack', link: '/fe/module/webpack' },
@@ -115,7 +115,7 @@ export default defineConfig({
         { text: '微信小程序', link: '/fe/wx/wx' },
         {
           text: 'Node',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'core', link: '/fe/node/core' },
             { text: 'express', link: '/fe/node/express' },
