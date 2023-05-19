@@ -694,5 +694,3 @@ console.log(original.b === copy.b) // false
 - defer 异步加载，脚本的执行会等到 HTML 解析完成之后
 - preload 预加载，立即加载(不会执行) 配合 as 使用，
 - prefetch 预加载，空闲时间加载(不会执行) 配合 as 使用，
-
-##

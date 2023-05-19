@@ -30,12 +30,12 @@ features:
     title: 走！！！！
     # details: todo
   - icon: ⚡️
-    title: Todo
+    title: 心想事成
     details: md样式优化
   - icon: ⚡️
     title: Todo
     details: algolia seach
   - icon: ⚡️
     title: 从0搭建
-    details: 
+    details:
 ---
