@@ -196,8 +196,6 @@ new Promise((resolve, reject) => {
 console.error(4)
 ```
 
-## 面向对象 & 继承
-
 ## 跨域
 
 ### 是什么
@@ -694,3 +692,126 @@ console.log(original.b === copy.b) // false
 - defer 异步加载，脚本的执行会等到 HTML 解析完成之后
 - preload 预加载，立即加载(不会执行) 配合 as 使用，
 - prefetch 预加载，空闲时间加载(不会执行) 配合 as 使用，
+
+## Cookie localStorage sessionStrorage
+
+cookie
+
+- Secure 仅在 HTPPS 安全通信时才会发送 cookie
+- HttpOnly 使用 Cookie 不能被 js 脚本访问 （防止 xss）
+- SameSite 防止 CORF
+  - Strict 浏览器完全禁止第三方请求携带 cookie
+  - Lax 只能在 get 提交表单、a 标签 get 请求、携带 Cookie
+  - None 默认 请求自动携带 Coookie
+
+|    特性    |      Cookie      |      localStorage      | sessionStrorage |
+| :--------: | :--------------: | :--------------------: | :-------------: |
+|  生命周期  |   根据失效时间   | 除非手动清除，永久有效 |  关闭页面失效   |
+|  存放大小  |     4kb 左右     |        一般 5M         |     一般 5M     |
+| 服务器通信 | 同源请求始终携带 |           -            |        -        |
+
+## 继承
+
+1. 原型链继承
+
+- 父类的引用属性会被所有子类实例共享，容易造成属性污染
+
+```js
+function Parent() {}
+function Child() {}
+Child.prototype = new Parent()
+```
+
+2. 构造函数继承
+
+- 只能继承父类实例属性和方法
+- 无法继承父类原型上的方法，每次创建子类实例都要调用一个父类的构造函数，影响性能
+
+```js
+function Parent() {}
+function Child() {
+  Parent.call(this)
+}
+```
+
+3. 组合继承
+
+- 每次创建子类实例调用两次父类构造函数
+
+```js
+function Parent() {}
+function Child() {
+  Parent.call(this)
+}
+Child.prototype = new Parent()
+Child.prototype.constructor = Child
+```
+
+4. 原型式继承
+
+- 容易造成属性污染，无法实现复杂的继承关系。
+
+```js
+var parent = {
+  name: 'parent',
+  sayName: function () {
+    console.log(this.name)
+  },
+}
+var child = Object.create(parent)
+```
+
+5. 寄生式继承
+
+- 容易造成属性污染，增强对象和原型之间的关系不够清晰。
+
+```js
+var parent = {
+  name: 'parent',
+  sayName: function () {
+    console.log(this.name)
+  },
+}
+function createChild(parent) {
+  var child = Object.create(parent)
+  child.sayName = function () {
+    console.log(this.name.toUpperCase())
+  }
+  return child
+}
+var child = createChild(parent)
+```
+
+6. 寄生组合式继承
+
+- 构造函数 + 寄生
+- 实现比较复杂。
+
+```js
+function Parent() {}
+function Child() {
+  Parent.call(this)
+}
+Child.prototype = Object.create(Parent.prototype)
+Child.prototype.constructor = Child
+```
+
+7. class 继承
+
+- 无法继承父类私有属性和方法。
+
+```js
+class Parent {
+  sayName() {
+    console.log('parent')
+  }
+}
+class Child extends Parent {
+  sayName() {
+    super.sayName()
+    console.log('child')
+  }
+}
+var child = new Child()
+child.sayName() // parent child
+```
