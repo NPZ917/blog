@@ -36,6 +36,6 @@ features:
     title: Todo
     details: algolia seach
   - icon: ⚡️
-    title: 从0搭建
-    details:
+    title: 知 行
+    details: todo
 ---
