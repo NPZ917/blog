@@ -66,6 +66,7 @@ export default defineConfig({
             { text: 'DOM', link: '/fe/js/dom' },
             { text: 'ES2015 -- 今', link: '/fe/js/es6' },
             { text: 'TypeScript', link: '/fe/js/ts' },
+            { text: 'Extend', link: '/fe/js/extend' },
           ],
         },
         {
@@ -126,7 +127,6 @@ export default defineConfig({
       '/sem/': [{ text: '计算机网络', link: '/sem/network' }],
       '/other/': [
         { text: '文件上传', link: '/other/upload' },
-        { text: '函数式编程', link: 'other/fun.md' },
         { text: '性能优化', link: '/other/optimize' }
       ],
       '/bug/': [{ text: 'Node', link: '/bug/node/' }],
