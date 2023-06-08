@@ -233,34 +233,15 @@ body.appendChild(script)
 - 服务器设置响应头 `Access-Control-Allow-Origin` `Access-Control-Request-Method` `Access-Control-Request-Headers` 等
 - 非简单请求 => 预请求
 
-3. 中间件 ？？？
-4. Nginx 反向代理
+3. Nginx
 
 ```js
-server
-{
-  listen 8000;
-  server_name svsapi.svsmarkets.com;
-  # root   /var/www/SFWEBSITE/API/public;
-  index index.php index.htm index.html;
-  location ~ \.php$ {
-    add_header Access-Control-Allow-Origin *; //关键
-    add_header Access-Control-Allow-Headers Content-Type,access-token,language,Cookie; //关键
-    add_header Access-Control-Allow-Method GET,POST,OPTIONS; //关键
-    root   /var/www/SFWEBSITE/API/public;
-    fastcgi_pass   127.0.0.1:9001;
-    fastcgi_index  index.php;
-    fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
-    include        fastcgi_params;
-  }
-  location / {
-    if (!-f $request_filename){
-      rewrite ^(.*)$ /index.php?$1 last;
-      break;
+server {
+  listen 80;
+    server_name  www.xxx.com;
+    location /api/ {
+      proxy_pass http://www.yyy.com:9999; #真实服务器的地址
     }
-  }
-  error_log  /usr/local/nginx/logs/error_svsapi_svsmarkets_com_log;
-  access_log  /usr/local/nginx/logs/access_svsapi_svsmarkets_com_log;
 }
 ```
 
