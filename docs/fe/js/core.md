@@ -492,8 +492,6 @@ console.error(arr.splice(0, 0, 5, 6))
 console.error(arr)
 ```
 
-## arguments 对象
-
 ## 防抖节流
 
 1. 防抖 debounce
@@ -538,19 +536,16 @@ return function (...args) {
 ```js
 function throttle(func, wait) {
   let preTime = 0
-  return function () {
-    let args = [...arguments]
+  return function (...args) {
     let now = new Date()
 
     if (now - preTime > wait) {
-      func, apply(this, args)
+      func.apply(this, args)
       preTime = now
     }
   }
 }
 ```
-
-## async & defer
 
 ## this
 
@@ -603,6 +598,14 @@ console.log(t());//1
 
 - 浅拷贝：一般指的是把对象的第一层拷贝到一个新对象上去
 - 一般需要借助递归实现，如果对象的值还是个对象，要进一步的深入拷贝，完全替换掉每一个复杂类型的引用。
+  - JSON.parse(JSON.stringify())
+
+缺点
+
+- 时间对象 -> 字符串形式
+- RegExp 、Error、Set、Map -> 空对象
+- 函数， undefined -> 丢失
+- NaN、infinity 和-Infinity -> null
 
 ```js
 // 浅拷贝
@@ -642,8 +645,6 @@ const copy = deepCopy(original)
 console.log(original === copy) // false
 console.log(original.b === copy.b) // false
 ```
-
-## 基础算法
 
 ## 事件流
 

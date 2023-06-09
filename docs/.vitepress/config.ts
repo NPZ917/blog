@@ -127,7 +127,8 @@ export default defineConfig({
       '/sem/': [{ text: '计算机网络', link: '/sem/network' }],
       '/other/': [
         { text: '文件上传', link: '/other/upload' },
-        { text: '性能优化', link: '/other/optimize' }
+        { text: '性能优化', link: '/other/optimize' },
+        { text: '图片懒加载', link: '/other/lazy_load' }
       ],
       '/bug/': [{ text: 'Node', link: '/bug/node/' }],
     },
