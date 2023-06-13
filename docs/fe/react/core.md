@@ -910,5 +910,222 @@ class List extends Component {
 使得函数组件拥有 state , 函数组件通过 useState 可以让组件重新渲染，更新视图
 
 ```jsx
-const [state, setState] = useState(initialState)
+import React, { useState } from 'react'
+
+function Counter() {
+  const [count, setCount] = useState(0)
+
+  const increment = () => {
+    setCount(count + 1)
+  }
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  )
+}
+```
+
+2. useReducer
+   用于在组件中使用状态和状态更新逻辑
+
+```jsx
+import React, { useReducer } from 'react'
+
+function counterReducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return state + 1
+    case 'decrement':
+      return state - 1
+    default:
+      return state
+  }
+}
+
+function Counter() {
+  const [count, dispatch] = useReducer(counterReducer, 0)
+
+  const increment = () => {
+    dispatch({ type: 'increment' })
+  }
+
+  const decrement = () => {
+    dispatch({ type: 'decrement' })
+  }
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  )
+}
+```
+
+3. useSyncExternalStore
+
+```jsx
+
+```
+
+4. useTransition
+
+```jsx
+
+```
+
+5. useDeferredValue
+
+```jsx
+
+```
+
+6. useEffect
+   用于在组件渲染后执行副作用操作
+
+```jsx
+import React, { useEffect } from 'react'
+
+function Example() {
+  useEffect(() => {
+    console.log('Component did mount')
+
+    return () => {
+      console.log('Component will unmount')
+    }
+  }, [])
+
+  return <p>Hello, React!</p>
+}
+```
+
+7. useLayoutEffect
+   与 useEffect 类似，但在 DOM 更新之后同步触发副作用操作
+
+```jsx
+import React, { useLayoutEffect } from 'react'
+
+function Example() {
+  useLayoutEffect(() => {
+    console.log('Component did mount')
+
+    return () => {
+      console.log('Component will unmount')
+    }
+  }, [])
+
+  return <p>Hello, React!</p>
+}
+```
+
+8. useInsertionEffect
+
+```jsx
+
+```
+
+9.  useContext
+    用于在组件中访问 React 的上下文（context）
+
+```jsx
+import React, { useContext } from 'react'
+
+const ThemeContext = React.createContext('light')
+
+function Button() {
+  const theme = useContext(ThemeContext)
+
+  return <button style={{ background: theme }}>Button</button>
+}
+```
+
+10. useRef
+    用于在组件之间共享可变的引用值
+
+```jsx
+import React, { useRef } from 'react'
+
+function TextInput() {
+  const inputRef = useRef()
+
+  const focusInput = () => {
+    inputRef.current.focus()
+  }
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onClick={focusInput}>Focus Input</button>
+    </div>
+  )
+}
+```
+
+11. useImperativeHandle
+    用于在 React 开发者工具中显示自定义 hook 的标签
+
+```jsx
+import { useDebugValue } from 'react'
+
+function useCustomHook() {
+  const value = 'Custom Value'
+  useDebugValue(value)
+
+  return value
+}
+```
+
+12. useMemo
+    用于缓存计算结果，以避免不必要的重复计算
+
+```jsx
+import React, { useMemo } from 'react'
+
+function ExpensiveCalculation({ a, b }) {
+  const result = useMemo(() => {
+    console.log('Calculating...')
+    return a + b
+  }, [a, b])
+
+  return <p>Result: {result}</p>
+}
+```
+
+13. useCallback
+    用于缓存回调函数，以避免不必要的函数创建
+
+```jsx
+import React, { useState, useCallback } from 'react'
+
+function Counter() {
+  const [count, setCount] = useState(0)
+
+  const increment = useCallback(() => {
+    setCount(count + 1)
+  }, [count])
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  )
+}
+```
+
+14. useDebugValue
+
+```jsx
+
+```
+
+15. useId
+    在 client 和 server 生成唯一的 id, 解决了在服务器渲染中，服务端和客户端产生 id 不一致的问题，更重要的是保障了在 streaming renderer(流式渲染) 中 id 的稳定性
+
+```jsx
+
 ```
