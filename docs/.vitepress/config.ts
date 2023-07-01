@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress';
+import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -30,7 +30,7 @@ export default defineConfig({
           { text: 'JavaScript', link: '/fe/js/core' },
           { text: 'Vue', link: '/fe/vue/2.x.md' },
           { text: 'React', link: '/fe/react/core' },
-          { text: '模块化', link: '/fe/module/' },
+          { text: '工程化', link: '/fe/module/' },
           // { text: '跨端', link: '/fe/multiterminal/uniapp' },
           { text: 'WX', link: '/fe/wx/wx' },
           { text: 'Node', link: '/fe/node/core' },
@@ -64,7 +64,7 @@ export default defineConfig({
             { text: 'Core', link: '/fe/js/core' },
             { text: 'BOM', link: '/fe/js/bom' },
             { text: 'DOM', link: '/fe/js/dom' },
-            { text: 'ES2015 -- 今', link: '/fe/js/es6' },
+            { text: 'ES2015+', link: '/fe/js/es6' },
             { text: 'TypeScript', link: '/fe/js/ts' },
             { text: 'Extend', link: '/fe/js/extend' },
           ],
@@ -85,18 +85,43 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: 'Core', link: '/fe/react/core' },
-            { text: 'Rect Router', link: '/fe/react/react-router' },
+            { text: 'React Router', link: '/fe/react/react-router' },
             { text: 'Redux', link: '/fe/react/redux' },
-            { text: 'Recat Redux', link: '/fe/react/react-redux' },
+            { text: 'React Redux', link: '/fe/react/react-redux' },
             { text: 'Mobx', link: '/fe/react/mobx' },
           ],
         },
         {
-          text: '模块化',
+          text: '工程化',
           collapsed: true,
           items: [
             { text: '初识', link: '/fe/module/' },
-            { text: 'webpack', link: '/fe/module/webpack' },
+            {
+              text: 'Webpack5',
+              items: [
+                {
+                  text: 'Core',
+                  link: '/fe/module/webpack',
+                },
+                // {
+                //   text: 'webpack5 + vue3 + ts',
+                //   link: '/fe/module/webpack5-vue3-ts',
+                // },
+                // {
+                //   text: 'webpack5 + vue3',
+                //   link: '/fe/module/',
+                // },
+                // {
+                //   text: 'webpack5 + vue3 + ts',
+                //   link: '/fe/module/',
+                // },
+                // {
+                //   text: 'webpack5 + react18 + ts',
+                //   link: '/fe/module/',
+                // },
+              ],
+            },
+            // { text: 'webpack', link: '/fe/module/webpack' },
             // { text: 'Vite', link: '/fe/module/vite' },
             // { text: 'Gulp', link: '/fe/module/gulp' },
             // { text: 'rollup', link: '/fe/module/rollup' },
@@ -128,7 +153,7 @@ export default defineConfig({
       '/other/': [
         { text: '文件上传', link: '/other/upload' },
         { text: '性能优化', link: '/other/optimize' },
-        { text: '图片懒加载', link: '/other/lazy_load' }
+        { text: '图片懒加载', link: '/other/lazy_load' },
       ],
       '/bug/': [{ text: 'Node', link: '/bug/node/' }],
     },
@@ -147,4 +172,4 @@ export default defineConfig({
 
     socialLinks: [{ icon: 'github', link: 'https://github.com' }],
   },
-});
+})
