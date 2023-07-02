@@ -4,6 +4,11 @@
 - 将语法打包成浏览器可以识别的语法
 - 输出的文件 `bundle`
 
+webpack5-st - [源码](https://github.com/NPZ917/webpack5-st)  
+webpack5-vue2 - [源码](https://github.com/NPZ917/webpack5-vue2)
+
+<!-- webpack5-vue3 -->
+
 ## 相关概念/顶层配置项
 
 - entry 入口 从哪个文件开始打包
@@ -12,11 +17,11 @@
 - plugin 插件 扩展 Webpack 以外的功能
 - mode 模式 开发/生产
 - resolve alias-路径别名 extensions-省略后缀名
-- optimization
-- devServer
-- devtool
-- cache
-- externals
+- optimization 模块抽取等性能相关配置
+- devServer 开发服务器
+- devtool 指定 ScourceMap
+- cache 缓存
+- externals 排除指定依赖而减小打包体积的外部拓展配置
 
 ### entry
 
@@ -193,7 +198,6 @@ prod
 - 压缩混淆
 - 文件压缩
 - 去除无用代码
-- devtool
 - ...
 
 ```js
@@ -1100,3 +1104,97 @@ module.exports = {
 plugins: ['prettier'],
 extends: ['eslint:recommended', 'plugin:prettier/recommended'],
 ```
+
+## vue2
+
+安装 vue2 相关依赖 vue-loader 最新 17 版本报错，使用 15 版本  
+重新生成 eslint 配置文件选择 vue
+
+```js
+npm i vue@2 vue-loader@15 vue-template-compiler -D
+npx eslint --init
+```
+
+src 清除，新建 App.vue index.js
+
+```js
+// App.vue
+
+<template>
+  <div>hello world</div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style lang="scss" scoped></style>
+
+```
+
+```js
+// main.js
+import Vue from 'vue'
+import App from '@/App.vue'
+
+new Vue({
+  el: '#app',
+  render: h => h(App),
+})
+```
+
+```js
+// .eslintrc.js
+
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-essential',
+    'plugin:prettier/recommended',
+  ],
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: ['.eslintrc.{js,cjs}'],
+      parserOptions: {
+        sourceType: 'script',
+      },
+    },
+  ],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['vue'],
+  rules: {},
+}
+```
+
+```js
+// webpack.base.js
+const { VueLoaderPlugin } = require('vue-loader')
+
+module: {
+  rules: [
+    // ....
+    {
+      test: /\.vue$/,
+      use: 'vue-loader'
+    }
+  ]
+},
+
+plugins: [
+  // ...
+  new VueLoaderPlugin()
+],
+```
+
+## vue3 + ts
