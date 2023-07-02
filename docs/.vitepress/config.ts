@@ -98,28 +98,29 @@ export default defineConfig({
             { text: '初识', link: '/fe/module/' },
             {
               text: 'Webpack5',
-              items: [
-                {
-                  text: 'Core',
-                  link: '/fe/module/webpack',
-                },
-                // {
-                //   text: 'webpack5 + vue3 + ts',
-                //   link: '/fe/module/webpack5-vue3-ts',
-                // },
-                // {
-                //   text: 'webpack5 + vue3',
-                //   link: '/fe/module/',
-                // },
-                // {
-                //   text: 'webpack5 + vue3 + ts',
-                //   link: '/fe/module/',
-                // },
-                // {
-                //   text: 'webpack5 + react18 + ts',
-                //   link: '/fe/module/',
-                // },
-              ],
+              link: '/fe/module/webpack',
+              // items: [
+              //   {
+              //     text: 'Core',
+              //     link: '/fe/module/webpack',
+              //   },
+              //   // {
+              //   //   text: 'webpack5 + vue3 + ts',
+              //   //   link: '/fe/module/webpack5-vue3-ts',
+              //   // },
+              //   // {
+              //   //   text: 'webpack5 + vue3',
+              //   //   link: '/fe/module/',
+              //   // },
+              //   // {
+              //   //   text: 'webpack5 + vue3 + ts',
+              //   //   link: '/fe/module/',
+              //   // },
+              //   // {
+              //   //   text: 'webpack5 + react18 + ts',
+              //   //   link: '/fe/module/',
+              //   // },
+              // ],
             },
             // { text: 'webpack', link: '/fe/module/webpack' },
             // { text: 'Vite', link: '/fe/module/vite' },
