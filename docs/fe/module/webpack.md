@@ -6,6 +6,7 @@
 
 webpack5-st - [源码](https://github.com/NPZ917/webpack5-st)  
 webpack5-vue2 - [源码](https://github.com/NPZ917/webpack5-vue2)
+webpack5-vue3-ts - [源码](https://github.com/NPZ917/webpack5-vue3-ts)
 
 <!-- webpack5-vue3 -->
 
