@@ -961,7 +961,7 @@ npx husky add .husky/pre-commit 'npm run check'
 
 当 git add git commit 后 会执行 npm run check -> npx lint-staged, eslint 不通过不可以提交
 
-husky 生效需要手动执行 husky install，借助 package.json 里面的 postintall 钩子实现这个功能，该钩子会在依赖安装完成后执行
+拉取源码后，husky 生效需要手动执行 husky install，借助 package.json 里面的 postintall 钩子实现这个功能，该钩子会在依赖安装完成后执行
 
 ```js
 "scripts": {
