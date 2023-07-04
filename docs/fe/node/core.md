@@ -1,41 +1,54 @@
 # Node
 
-node.js 是一个开源的，跨平台的js运行环境
+node.js 是一个开源的，跨平台的 js 运行环境
 
 - 开发服务器应用
-- 开发工具类应用  webpack vite babel
-- 开发桌面端应用  vscode  postman  -> electron -> node
+- 开发工具类应用 webpack vite babel
+- 开发桌面端应用 vscode postman -> electron -> node
 
-dir  查看目录   
+dir 查看目录
 
-顶级对象 - global,也可以使用globalThis
+顶级对象 - global,也可以使用 globalThis
 
-## Buffer  
-### 概念  
-Buffer 缓冲区，是一个类似于Array的对象，用于表示固定长度的字节序列  
+## Buffer
+
+### 概念
+
+Buffer 缓冲区，是一个类似于 Array 的对象，用于表示固定长度的字节序列  
 一段固定长度的内存空间，专门处理二进制数据
+
 ### 特点
+
 - Buffer 大小固定且无法调整
 - 性能较好，可以直接对计算机内存进行操作
-- 每个元素的大小为1字节/byte
+- 每个元素的大小为 1 字节/byte
+
 ### 创建
+
 1. Buffer.alloc(size)
+
 ```js
 let buf = Buffer.alloc(10)
 console.error(buf);
 // 输出
 <Buffer 00 00 00 00 00 00 00 00 00 00>
 ```
-2. Buffer.allocUnsafe(size)  分配内存时不会清除内存残留的数据
-```js 
+
+2. Buffer.allocUnsafe(size) 分配内存时不会清除内存残留的数据
+
+```js
 let buf = Buffer.allocUnsafe(10)
 ```
-3. Buffer.from(str)  将一个字符串转换为 Buffer
+
+3. Buffer.from(str) 将一个字符串转换为 Buffer
+
 ```js
 let buf = Buffer.from('hello')
 let buf = Buffer.from([105, 122, 132])
 ```
+
 ### buffer 与 字符串的转化
+
 ```js
 let buf = Buffer.from([105, 122, 132])
 
@@ -50,42 +63,47 @@ buf[0] = 95         // 修改
 --------------------
 // 溢出
 buf[0] = 361 // 舍弃高位的数字
-// 中文 
+// 中文
 ```
 
-## fs 文件系统模块 (file system)  
+## fs 文件系统模块 (file system)
 
-### 文件写入  
+### 文件写入
 
-1.writeFile 异步写入  
+1.writeFile 异步写入
+
 ```js
 fs.writeFile(file, data[, optoins], callback)
 ```
+
 - file 文件名
 - data 待写入的数据
 - options 选项配置 可选 `{flag: 'a'}`-
 - callback 回调
 
 文件如果不存在，则创建文件
+
 ```js
-const fs = require ('fs') 
+const fs = require('fs')
 
 fs.writeFile('./test.txt', 'hello', err => {
-  if(err) {
-    console.error('写入失败');
+  if (err) {
+    console.error('写入失败')
     return
   }
-  console.error('写入成功');
+  console.error('写入成功')
 })
 ```
 
 2.writeFileSync 同步写入
+
 ```js
 fs.writeFileSync(./data.txt, 'data')
 ```
 
 3.追加写入
-- fs.appendFile      比如日志
+
+- fs.appendFile 比如日志
 - fs.appendfileSync
 
 `\r\n` -- 换行
@@ -93,7 +111,7 @@ fs.writeFileSync(./data.txt, 'data')
 ```js
 const fs = require('fs')
 
-fs.appendFile('./test.txt', '\r\nnode', (err) => {
+fs.appendFile('./test.txt', '\r\nnode', err => {
   if (err) {
     console.error('失败')
     return
@@ -101,6 +119,7 @@ fs.appendFile('./test.txt', '\r\nnode', (err) => {
   console.error('成功')
 })
 ```
+
 4.流式写入
 `fs.createWriteStream(path[, optoins])`
 
@@ -124,16 +143,17 @@ ws.close()
 ```
 
 5.写入场景
+
 - 下载文件
 - 安装软件
 - 保存日志
-- 编辑器保存文件  
+- 编辑器保存文件
 - 视频录制
-
 
 当需要持久化保存数据时，用 文件写入
 
 ### 文件读取
+
 - readFile
 - readFileSync
 
@@ -149,7 +169,7 @@ fs.readFile('./data.txt', (err, data) => {
 })
 ```
 
-流式读取  
+流式读取
 
 处理大文件可以提高效率
 
@@ -158,7 +178,7 @@ const fs = require('fs')
 
 const rs = fs.createReadStream('./data.mp4')
 
-rs.on('data', (chunk) => {
+rs.on('data', chunk => {
   console.error(chunk) // 65536 字节 => 64kb
   console.error(chunk.length)
   console.error(chunk.toString()) // 乱码 视频文件 非 utf-8
@@ -172,7 +192,7 @@ rs.end('data', () => {
 ```js
 // 复制 先读 -> 后写入
 const fs = require('fs')
-const process = require('process')  // 分析占用
+const process = require('process') // 分析占用
 
 // 1
 // let data = fs.readFileSync('./data.txt')
@@ -198,6 +218,7 @@ rs.pipe(ws)
 ```
 
 ### 文件重命名与移动文件
+
 - rename(oldPath, newPath, callback)
 - renameSync(oldPath, newPath)
 
@@ -224,7 +245,9 @@ fs.rename('./data1.txt', '../src/data3.txt', (err) => {
   console.error('成功')
 })
 ```
+
 ### 文件删除
+
 - unlink(path, cb)
 - unlinkSync(path)
 - rm(path, cb)
@@ -250,12 +273,12 @@ fs.rm('./data3.txt', (err) => {
 })
 ```
 
-### 文件夹操作  
+### 文件夹操作
 
-1.创建文件夹  
+1.创建文件夹
 
-- mkdir(path[, optoins], cb) - make dirctory  `recursive: true` 递归创建  
-- mkdirSync(path[, optoins]) - 
+- mkdir(path[, optoins], cb) - make dirctory `recursive: true` 递归创建
+- mkdirSync(path[, optoins]) -
 
 ```js
 const fs = require('fs')
@@ -280,17 +303,17 @@ fs.mkdir('./a/b/c', { recursive: true }, (err) => {
 ```
 
 2.读取文件夹
- - readdir(path, cb)
+
+- readdir(path, cb)
 
 ```js
 fs.readdir('./txt', (err, data) => {
   console.error(data)
-})
-
-[ 'data3.txt' ]
+})['data3.txt']
 ```
 
 3.删除文件夹
+
 - rmdir(path, cb)
 
 ```js
@@ -309,7 +332,9 @@ fs.rm('./a',{ recursive: true }, err => {
 })
 
 ```
+
 ### 查看资源信息
+
 - stat(path, cb)
 
 ```js
@@ -343,6 +368,7 @@ Stats {
 ```
 
 ### 路径
+
 ```js
 // 相对路径
 fs.writeFileSync('./test.txt', 'hello')
@@ -352,10 +378,11 @@ fs.writeFileSync('../test.txt', 'hello')
 // 绝对路径
 fs.writeFileSync('D:/index.html', 'hello')
 fs.writeFileSync('/index.html', 'hello')
-fs.writeFileSync('C:/index.html', 'hello')   // 权限
+fs.writeFileSync('C:/index.html', 'hello') // 权限
 ```
 
 相对路径参照物： 命令行的工作目录
+
 ```js
 fs.writeFileSync('./index.html', 'hello')
 ```
@@ -367,6 +394,7 @@ fs.writeFileSync(__dirname + '/index.html', 'hello')
 ```
 
 ### 批量重命名
+
 ```js
 const fs = require('fs')
 
@@ -385,25 +413,26 @@ files.forEach(item => {
 ```
 
 ## path 模块
-- path.resolve()  拼接规范的绝对路径
-- path.sep  获取操作系统的路径分隔符    windows \  linux /
-- path.parse  解析路径并返回对象
-- path.basename 获取路径的基础名称
-- path.dirname  获取路径的目录名
-- path.extname  获取路径的扩展名
 
-__filename 文件的绝对路径
+- path.resolve() 拼接规范的绝对路径
+- path.sep 获取操作系统的路径分隔符 windows \ linux /
+- path.parse 解析路径并返回对象
+- path.basename 获取路径的基础名称
+- path.dirname 获取路径的目录名
+- path.extname 获取路径的扩展名
+
+\_\_filename 文件的绝对路径
 
 ```js
 const path = require('path')
 
-path.resolve((__dirname + 'index.html'))
+path.resolve(__dirname + 'index.html')
 ```
 
-## HTTP 模块  
-
+## HTTP 模块
 
 ### 创建
+
 ```js
 const http = require('http')
 
@@ -419,14 +448,16 @@ server.listen(9000, () => {
 ```
 
 ### 注意事项
-- 每次重启  `npm i -g nodemon`  `nodemon http.js` 自动监听
-- 响应内容乱码  
-  
+
+- 每次重启 `npm i -g nodemon` `nodemon http.js` 自动监听
+- 响应内容乱码
+
 ```js
 response.setHeader('content-type', 'text/html;charset=utf-8')
 ```
 
 ### 获取请求行请求头
+
 ```js
 const http = require('http')
 
@@ -484,13 +515,13 @@ const http = require('http')
 const server = http.createServer((request, response) => {
   let body = ''
   // 绑定 data 事件
-  request.on('data', (chunk) => {
+  request.on('data', chunk => {
     body += chunk
   })
 
   // 绑定 end 事件
-  request.on('end', (chunk) => {
-    console.error(body)         // username=123&password=13
+  request.on('end', chunk => {
+    console.error(body) // username=123&password=13
 
     response.end('hello, http') // 设置响应体
   })
@@ -502,7 +533,9 @@ server.listen(9000, () => {
 ```
 
 ### 获取请求路径 & 查询字符串
-1.url 模块  旧版
+
+1.url 模块 旧版
+
 ```js
 const http = require('http')
 // 1.url 模块
@@ -556,7 +589,9 @@ server.listen(9000, () => {
   console.error('服务已启动')
 })
 ```
-2.new URL() 
+
+2.new URL()
+
 ```js
 const http = require('http')
 const server = http.createServer((request, response) => {
@@ -621,7 +656,6 @@ const server = http.createServer((request, response) => {
 server.listen(9000, () => {
   console.error('服务已启动')
 })
-
 ```
 
 ```js
@@ -647,6 +681,7 @@ server.listen(9000, () => {
 ```
 
 ### 设置响应报文
+
 ```js
 const http = require('http')
 const server = http.createServer((request, response) => {
@@ -674,7 +709,9 @@ server.listen(9000, () => {
   console.error('服务已启动')
 })
 ```
+
 ### 小小体验
+
 ```js
 const http = require('http')
 const server = http.createServer((request, response) => {
@@ -749,7 +786,9 @@ server.listen(9000, () => {
   console.error('服务已启动')
 })
 ```
-分离html
+
+分离 html
+
 ```js
 // index.html
 <!DOCTYPE html>
@@ -829,47 +868,47 @@ server.listen(9000, () => {
 })
 ```
 
-再次分离css js
+再次分离 css js
+
 ```html
 // index.html
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./index.css">
-</head>
+  <body>
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
 
-<body>
-  <table>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-
-  <script src="./index.js"></script>
-</body>
-
+    <script src="./index.js"></script>
+  </body>
 </html>
 ```
+
 ```css
 // index.css
 td {
@@ -890,16 +929,18 @@ td {
   border-collapse: collapse;
 }
 ```
+
 ```js
 // index.js
 let tds = document.querySelectorAll('td')
 
-tds.forEach((item) => {
+tds.forEach(item => {
   item.onclick = function () {
     this.style.background = '#222'
   }
 })
 ```
+
 ```js
 const http = require('http')
 const fs = require('fs')
@@ -924,7 +965,9 @@ server.listen(9000, () => {
   console.error('服务已启动')
 })
 ```
+
 ### 搭建静态资源服务
+
 ```js
 const http = require('http')
 const fs = require('fs')
@@ -955,33 +998,34 @@ server.listen(9000, () => {
 ### 设置资源类型
 
 content-type 的值
+
 - application/json：JSON 数据格式；
 - application/x-www-form-urlencoded：表单默认的提数据格式；
 - multipart/form-data：一般用于文件上传
 - application/pdf：pdf 格式
 - application/msword：Word 文档格式
-- application/octet-stream：二进制流数据（如常见的文件下载）  
-- 
+- application/octet-stream：二进制流数据（如常见的文件下载）
+-
 
-- text/html： HTML格式
+- text/html： HTML 格式
 - text/plain：纯文本格式
-- text/xml： XML格式  
-- 
+- text/xml： XML 格式
+-
 
 - image/gif ：gif 图片格式
 - image/jpeg ：jpg 图片格式
-- image/png：png 图片格式   
-- 
+- image/png：png 图片格式
+-
 
-- audio/x-wav：wav文件  
-- audio/x-ms-wma：w文件
-- audio/mp3：mp3文件
-- video/x-ms-wmv：wmv文件
-- video/mpeg4：mp4文件
-- video/avi：avi文件
-
+- audio/x-wav：wav 文件
+- audio/x-ms-wma：w 文件
+- audio/mp3：mp3 文件
+- video/x-ms-wmv：wmv 文件
+- video/mpeg4：mp4 文件
+- video/avi：avi 文件
 
 根据文件后缀名获取，然后设置，更规范
+
 ```js
 const http = require('http')
 const fs = require('fs')
@@ -1030,9 +1074,10 @@ server.listen(9000, () => {
 ```
 
 ### 错误处理
+
 ```js
 const server = http.createServer((request, response) => {
-  if(request.method !== 'GET') {
+  if (request.method !== 'GET') {
     response.statusCode = 405
     response.end('Method Not Allowed')
     return
@@ -1041,7 +1086,7 @@ const server = http.createServer((request, response) => {
   fs.readFile(filePath, (err, data) => {
     if (err) {
       response.setHeader('content-type', 'text/html;charset=utf-8')
-      
+
       switch (err.code) {
         case 'ENOENT':
           response.statusCode = 404
@@ -1060,15 +1105,19 @@ const server = http.createServer((request, response) => {
   })
 })
 ```
+
 ## 模块化
 
 ### 使用
+
 - module.exports
   - 可以暴露任意数据
 - exports
   - 不能使用 `exports = value` exports = module.exports = {}
   - require 返回的结果 是 module.exports 的值
+
 1.
+
 ```js
 // me.js
 function a() {
@@ -1082,7 +1131,9 @@ const me = require('./me.js')
 
 me()
 ```
+
 2.module.exports
+
 ```js
 // me.js
 function a() {
@@ -1106,6 +1157,7 @@ me.b()
 ```
 
 3exports
+
 ```js
 function a() {
   console.error('aaaaaaa')
@@ -1120,30 +1172,36 @@ exports.b = b
 ```
 
 ### 导入文件模块
+
 1. 自己模块建议 相对路径 `./ ../`,不可省略
-2. js和json文件后缀可省略 js -> json
-3. 如果导入的路径是文件夹，首先检测 package.json 中的main属性对应的文件，如果存在则导入，不存在报错  
-   如果main属性不存在，或者package.json不存在，则会尝试导入文件夹下的index.js和index.json，如果还没找到，报错
-4. 导入nodejs 内置模块时，直接require 模块名字即可
+2. js 和 json 文件后缀可省略 js -> json
+3. 如果导入的路径是文件夹，首先检测 package.json 中的 main 属性对应的文件，如果存在则导入，不存在报错  
+   如果 main 属性不存在，或者 package.json 不存在，则会尝试导入文件夹下的 index.js 和 index.json，如果还没找到，报错
+4. 导入 nodejs 内置模块时，直接 require 模块名字即可
 
 ### CommonJS 规范
+
 module.exports、exports、 require 是一种规范  
-nodejs 实现了CommonJS 规范
+nodejs 实现了 CommonJS 规范
 
 ### 包管理工具
+
 - npm
 - yarn
-- cnpm
+- pnpm
 
 #### 初始化
+
 `npm init`
 `npm init -y` 默认值创建
 
 #### 开发依赖和生产依赖
+
 默认为 -S
+
 1. 生产依赖
    - 开发 + 生产 所需要的依赖
-   - `npm i jquery -S` `npm i jquery --save` 
+   - `npm i jquery -S` `npm i jquery --save`
    - 保存在 dependencies 属性
 2. 开发依赖
    - 开发所需要的依赖
@@ -1151,43 +1209,59 @@ nodejs 实现了CommonJS 规范
    - 保存在 devDependencies 属性
 
 #### nvm
+
 (下载连接)[https://github.com/coreybutler/nvm-windows/releases]
 
+1. 必须先卸载 Node 环境变量删除， d 盘的全局依赖和 catch 删除 然后重启
 
-1. 必须先卸载Node 环境变量删除， d 盘的全局依赖和catch删除 然后重启
 - C:\Program Files (x86)\Nodejs
 - C:\Program Files\Nodejs
 - C:\Users\{User}\AppData\Roaming\npm
 - C:\Users\{User}\AppData\Roaming\npm-cache
 
-2. 下载到D盘nvm -> `D:\soft\nvm` nodejs -> `D:\soft\nodejs`
+2. 下载到 D 盘 nvm -> `D:\soft\nvm` nodejs -> `D:\soft\nodejs`
 3. nvm setting.txt 设置淘宝镜像
    - `node_mirror: https://npmmirror.com/mirrors/node/`
    - `npm_mirror: https://npmmirror.com/mirrors/npm/`
 4. 指令
-   - `nvm list` 查看已安装的版本和正在使用的版本
-   - `nvm list available` 查看可通过nvm安装的Node.js版本
-   - `nvm install 版本号` 安装指定版本的Node.js
-   - `nvm use 版本号` 切换为指定版本的Node.js
-   - `nvm uninstall 版本号` 卸载指定版本的Node.js
 
-5. 配置全局依赖  每个版本都要修改一次
+   - `nvm list` 查看已安装的版本和正在使用的版本
+   - `nvm list available` 查看可通过 nvm 安装的 Node.js 版本
+   - `nvm install 版本号` 安装指定版本的 Node.js
+   - `nvm use 版本号` 切换为指定版本的 Node.js
+   - `nvm uninstall 版本号` 卸载指定版本的 Node.js
+
+5. 配置全局依赖 每个版本都要修改一次
+
    - `npm config set prefix "D:\soft\nodeCatch\npm\npm_global"`
    - `npm config set cache "D:\soft\nodeCatch\npm\npm_cache"`
 
 6. 配置环境变量
+
    - 用户变量 `D:\soft\nodeCatch\npm\npm_global`
    - 系统变量 `NODE_PATH`---`D:\soft\nodeCatch\npm\npm_global\node_modules`
 
 7. `npm install yarn -g`
-  - `yarn global bin` 查看 yarn 全局bin位置(prefix)
-  - `yarn global dir` 查看 yarn 全局安装位置(folder)
-  - `yarn cache dir` 查看 yarn 全局cache位置(cache)
-  - `yarn config list` 查看配置列表
+
+- `yarn global bin` 查看 yarn 全局 bin 位置(prefix)
+- `yarn global dir` 查看 yarn 全局安装位置(folder)
+- `yarn cache dir` 查看 yarn 全局 cache 位置(cache)
+- `yarn config list` 查看配置列表
 
 8. 修改 yarn 路径
+
    - `yarn config set prefix "D:\soft\nodeCatch\npm\yarn_bin"`
    - `yarn config set global-folder "D:\soft\nodeCatch\npm\yarn_dir"`
    - `yarn config set cache-folder "D:\soft\nodeCatch\npm\npm_cache"`
 
 9. 系统变量 `D:\soft\nodeCatch\npm\yarn_bin\bin`
+
+10. `npm i pnpm -g`
+
+- `pnpm config set store-dir "D:\soft\nodeCatch\npm\.pnpm-store"`
+- `pnpm config set global-dir "D:\soft\nodeCatch\npm\pnpm_global" // pnpm 全局安装路径`
+- `pnpm config set global-bin-dir "D:\soft\nodeCatch\npm\pnpm_bin_dir" // pnpm 全局 bin 路径`
+- `pnpm config set state-dir "D:\soft\nodeCatch\npm\pnpm_state_dir" // pnpm 创建 pnpm-state.json 文件的目录`
+- `pnpm config set cache-dir "D:\soft\nodeCatch\npm\pnpm_cache" // pnpm 全局缓存路径`
+
+环境变量 path: `D:\soft\nodeCatch\npm\pnpm_bin_dir`
