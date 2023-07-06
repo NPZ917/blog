@@ -42,7 +42,7 @@ export default defineConfig({
         items: [{ text: '计算机网络', link: '/sem/network' }],
       },
       { text: '日常随笔', link: '/daily_notes/' },
-      { text: '踩坑汇总', link: '/bug/node/' },
+      { text: '踩坑汇总', link: '/bug/node' },
       { text: '其他', link: '/other/upload' },
     ],
     sidebar: {
@@ -156,7 +156,10 @@ export default defineConfig({
         { text: '性能优化', link: '/other/optimize' },
         { text: '图片懒加载', link: '/other/lazy_load' },
       ],
-      '/bug/': [{ text: 'Node', link: '/bug/node/' }],
+      '/bug/': [
+        { text: 'Node', link: '/bug/node' },
+        { text: 'Element-plus', link: '/bug/element-plus' },
+      ],
     },
 
     footer: {
