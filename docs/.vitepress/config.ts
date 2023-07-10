@@ -123,7 +123,7 @@ export default defineConfig({
               // ],
             },
             // { text: 'webpack', link: '/fe/module/webpack' },
-            // { text: 'Vite', link: '/fe/module/vite' },
+            { text: 'Vite', link: '/fe/module/vite' },
             // { text: 'Gulp', link: '/fe/module/gulp' },
             // { text: 'rollup', link: '/fe/module/rollup' },
             // { text: 'esbuild', link: '/fe/module/esbuild' },
