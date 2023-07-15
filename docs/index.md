@@ -31,11 +31,11 @@ features:
     # details: todo
   - icon: ⚡️
     title: 心想事成
-    details: md样式优化
+    # details: md样式优化
   - icon: ⚡️
-    title: Todo
-    details: algolia seach
+    title: 轻舟已过万重山
+    # details: algolia seach
   - icon: ⚡️
     title: 知 行
-    details: todo
+    # details: todo
 ---
