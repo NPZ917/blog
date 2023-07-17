@@ -66,7 +66,7 @@ interface A {
   a: string
   d?: number // 可选属性
   readonly e: string //只读属性 不可修改
-  [f: string]: any //任意属性
+  [f: string]: any //任意属性-索引签名
 }
 ```
 
