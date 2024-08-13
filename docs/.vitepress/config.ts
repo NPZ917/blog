@@ -74,6 +74,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: '2.x', link: '/fe/vue/2.x.md' },
+            { text: '2.x Analysis', link: '/fe/vue/vue2-analysis.md' },
             { text: '3.x', link: '/fe/vue/3.x.md' },
             { text: 'Vue Router', link: '/fe/vue/vue-router' },
             { text: 'Vuex', link: '/fe/vue/vuex' },

@@ -1212,18 +1212,21 @@ nodejs 实现了 CommonJS 规范
 
 (下载连接)[https://github.com/coreybutler/nvm-windows/releases]
 
-1. 必须先卸载 Node 环境变量删除， d 盘的全局依赖和 catch 删除 然后重启
+1. 如果已安装 Node, 先卸载 Node 环境变量删除， 全局依赖和缓存删除 重启？
 
 - C:\Program Files (x86)\Nodejs
 - C:\Program Files\Nodejs
 - C:\Users\{User}\AppData\Roaming\npm
 - C:\Users\{User}\AppData\Roaming\npm-cache
+- C:\Users\{User}\AppData\local
 
-2. 下载到 D 盘 nvm -> `D:\soft\nvm` nodejs -> `D:\soft\nodejs`
-3. nvm setting.txt 设置淘宝镜像
+  ...
+
+1. 下载到 D 盘 nvm -> `D:\soft\nvm` nodejs -> `D:\soft\nodejs`
+2. nvm setting.txt 设置淘宝镜像
    - `node_mirror: https://npmmirror.com/mirrors/node/`
    - `npm_mirror: https://npmmirror.com/mirrors/npm/`
-4. 指令
+3. 指令
 
    - `nvm list` 查看已安装的版本和正在使用的版本
    - `nvm list available` 查看可通过 nvm 安装的 Node.js 版本
@@ -1231,32 +1234,52 @@ nodejs 实现了 CommonJS 规范
    - `nvm use 版本号` 切换为指定版本的 Node.js
    - `nvm uninstall 版本号` 卸载指定版本的 Node.js
 
-5. 配置全局依赖 每个版本都要修改一次
+##### npm
 
-   - `npm config set prefix "D:\soft\nodeCatch\npm\npm_global"`
-   - `npm config set cache "D:\soft\nodeCatch\npm\npm_cache"`
+1. 配置全局依赖安装位置以及缓存位置
 
-6. 配置环境变量
+   - `npm config set prefix "D:\soft\nodeCache\npm\node_global"`
+   - `npm config set cache "D:\soft\nodeCache\npm\node_cache"`
 
-   - 用户变量 `D:\soft\nodeCatch\npm\npm_global`
-   - 系统变量 `NODE_PATH`---`D:\soft\nodeCatch\npm\npm_global\node_modules`
+2. 配置环境变量
 
-7. `npm install yarn -g`
+   - 用户变量 `D:\soft\nodeCache\npm\node_global`
+   - 系统变量 `NODE_PATH`---`D:\soft\nodeCache\npm\node_global\node_modules`
+
+3. 设置源
+   `npm config set registry https://registry.npmmirror.com/`
+4. 命令
+
+- `npm ls -g --depth 0` 查看全局安装的包
+- `npm config list` 查看配置
+
+##### yarn
+
+1. `npm install yarn -g`
 
 - `yarn global bin` 查看 yarn 全局 bin 位置(prefix)
 - `yarn global dir` 查看 yarn 全局安装位置(folder)
 - `yarn cache dir` 查看 yarn 全局 cache 位置(cache)
 - `yarn config list` 查看配置列表
+- `yarn global add <>` 全局安装
+- `yarn global remove <>` 全局卸载
 
-8. 修改 yarn 路径
+2. `yarn cache dir` 位置删除
 
-   - `yarn config set prefix "D:\soft\nodeCatch\npm\yarn_bin"`
-   - `yarn config set global-folder "D:\soft\nodeCatch\npm\yarn_dir"`
-   - `yarn config set cache-folder "D:\soft\nodeCatch\npm\npm_cache"`
+3. 修改 yarn 路径
 
-9. 系统变量 `D:\soft\nodeCatch\npm\yarn_bin\bin`
+   - `yarn config set prefix "D:\soft\nodeCache\yarn\global"`
+   - `yarn config set global-folder "D:\soft\nodeCache\yarn\global"`
+   - `yarn config set cache-folder "D:\soft\nodeCache\yarn\cache"`
 
-10. `npm i pnpm -g`
+4. 用户变量 `D:\soft\nodeCache\yarn\global\bin`
+5. 设置源
+   - `yarn config set registry https://registry.npmmirror.com/`
+   - `yarn config delete proxy` 删除代理，防止 info
+
+##### pnpm
+
+1.  `npm i pnpm -g`
 
 - `pnpm config set store-dir "D:\soft\nodeCatch\npm\.pnpm-store"`
 - `pnpm config set global-dir "D:\soft\nodeCatch\npm\pnpm_global" // pnpm 全局安装路径`
