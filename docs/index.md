@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: '不知道写啥，不知道'
-  text: '😄😄😄'
+  name: 'WWW'
+  text: '-------'
   tagline: coding
   image:
     src: /home/logo.png
@@ -12,30 +12,30 @@ hero:
   actions:
     - theme: brand
       text: Getting stard
-      link: /fe/vue/2.x
-    # - theme: alt
-    #   text: API Examples
-    #   link: /api-examples
-    # - theme: alt
-    #   text: Vue
-    #   link: /vue/core
+  # link: /fe/vue/2.x
+  # - theme: alt
+  #   text: API Examples
+  #   link: /api-examples
+  # - theme: alt
+  #   text: Vue
+  #   link: /vue/core
 features:
   - icon: ⚡️
-    title: 陈平安
+    title: ---
     # details: todo
   - icon: 🖖
-    title: 大道就在脚下
+    title: ---
     # details: todo
   - icon: 🛠️
-    title: 走！！！！
+    title: ---
     # details: todo
   - icon: ⚡️
-    title: 心想事成
+    title: ---
     # details: md样式优化
   - icon: ⚡️
-    title: 轻舟已过万重山
+    title: ---
     # details: algolia seach
   - icon: ⚡️
-    title: 知 行
+    title: ---
     # details: todo
 ---

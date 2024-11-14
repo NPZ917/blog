@@ -24,7 +24,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       {
-        text: '前端',
+        text: 'Front End',
         items: [
           { text: 'HTML/CSS', link: '/fe/html_css/html' },
           { text: 'JavaScript', link: '/fe/js/core' },
@@ -38,12 +38,12 @@ export default defineConfig({
         ],
       },
       {
-        text: '软工理论',
+        text: 'Web',
         items: [{ text: '计算机网络', link: '/sem/network' }],
       },
-      { text: '日常随笔', link: '/daily_notes/' },
-      { text: '踩坑汇总', link: '/bug/node' },
-      { text: '其他', link: '/other/upload' },
+      { text: 'Essay', link: '/daily_notes/' },
+      { text: 'Pit', link: '/bug/node' },
+      { text: 'Other', link: '/other/upload' },
     ],
     sidebar: {
       '/fe/': [
@@ -163,10 +163,10 @@ export default defineConfig({
       ],
     },
 
-    footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2023-present N',
-    },
+    // footer: {
+    //   message: 'Released under the MIT License.',
+    //   copyright: 'Copyright © 2023-present N',
+    // },
 
     // 标题深度，[2,3] 表示提取 h2 和 h3 标题
     outline: 'deep',

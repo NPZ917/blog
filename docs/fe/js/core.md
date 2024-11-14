@@ -1,3 +1,5 @@
+# [MDN - JS](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+
 ## 数据类型 & 判断
 
 1. number
@@ -40,8 +42,6 @@
 - 对 toString()方法进行函数借用可以对全部类型进行判断。
 - Object.prototype.toString 可以返回当前调用者的对象类型。`[object, [[clas]]]`
 - 加 call 因为 Object.prototype.toString()返回的是调用者的类型。不论你 toString()本身的入参写的是什么，在 Object.prototype.toString()中，他的调用者永远都是 Object.prototype;所以，在不加 call()情况下，我们的出来的结果永远都是 '[object Object]'
-
-## undefined & null
 
 ## 原型 & 原型链
 
@@ -156,7 +156,7 @@ setTimeout(() => {
   new Promise((resolve, reject) => {
     console.error(10)
     resolve()
-  }).then((res) => {
+  }).then(res => {
     console.error(11)
   })
 })
@@ -169,13 +169,13 @@ new Promise((resolve, reject) => {
   console.error(2)
   resolve()
 })
-  .then((res) => {
+  .then(res => {
     console.error(5)
     setTimeout(() => {
       console.error(13)
     })
   })
-  .then((res) => {
+  .then(res => {
     console.error(7)
   })
 
@@ -183,13 +183,13 @@ new Promise((resolve, reject) => {
   console.error(3)
   resolve()
 })
-  .then((res) => {
+  .then(res => {
     console.error(6)
     setTimeout(() => {
       console.error(14)
     })
   })
-  .then((res) => {
+  .then(res => {
     console.error(8)
   })
 
@@ -245,7 +245,7 @@ server {
 }
 ```
 
-## 存储
+4. Vue/React 配置代理（Webpack Vite）
 
 ## 柯里化
 
@@ -409,7 +409,7 @@ const person = myNew(Person, '小明', '12')
 ```js
 function flat(arr, num = 1) {
   let result = []
-  arr.forEach((item) => {
+  arr.forEach(item => {
     if (Array.isArray(item) && num > 0) {
       result = result.concat(flat(item, num - 1))
     } else {
@@ -668,12 +668,10 @@ console.log(original.b === copy.b) // false
 
 ## async/defer preload/prefetch
 
-没有 async/defer 属性的 js 会阻塞 html 解析
-
-- async 异步加载，脚本加载完成后，立即执行 js 脚本
+- async 异步加载，脚本加载完成后，立即执行 js 脚本，适合独立无依赖的代码
 - defer 异步加载，脚本的执行会等到 HTML 解析完成之后
-- preload 预加载，立即加载(不会执行) 配合 as 使用，
-- prefetch 预加载，空闲时间加载(不会执行) 配合 as 使用，
+- preload 预加载-马上使用，立即加载(不会执行) 配合 as 使用，
+- prefetch 预加载-未来使用，空闲时间加载(不会执行) 配合 as 使用，
 
 ## Cookie localStorage sessionStrorage
 
