@@ -156,6 +156,7 @@ export default defineConfig({
         { text: '文件上传', link: '/other/upload' },
         { text: '性能优化', link: '/other/optimize' },
         { text: '图片懒加载', link: '/other/lazy_load' },
+        { text: 'Git 多账号', link: '/other/git' },
       ],
       '/bug/': [
         { text: 'Node', link: '/bug/node' },
