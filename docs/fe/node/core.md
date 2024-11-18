@@ -1281,10 +1281,10 @@ nodejs 实现了 CommonJS 规范
 
 1.  `npm i pnpm -g`
 
-- `pnpm config set store-dir "D:\soft\nodeCatch\npm\.pnpm-store"`
-- `pnpm config set global-dir "D:\soft\nodeCatch\npm\pnpm_global" // pnpm 全局安装路径`
-- `pnpm config set global-bin-dir "D:\soft\nodeCatch\npm\pnpm_bin_dir" // pnpm 全局 bin 路径`
-- `pnpm config set state-dir "D:\soft\nodeCatch\npm\pnpm_state_dir" // pnpm 创建 pnpm-state.json 文件的目录`
-- `pnpm config set cache-dir "D:\soft\nodeCatch\npm\pnpm_cache" // pnpm 全局缓存路径`
+- `pnpm config set store-dir "D:\soft\nodeCache\pnpm\.pnpm-store"`
+- `pnpm config set global-dir "D:\soft\nodeCache\pnpm\pnpm_global" // pnpm 全局安装路径`
+- `pnpm config set global-bin-dir "D:\soft\nodeCache\pnpm\pnpm_bin_dir" // pnpm 全局 bin 路径`
+- `pnpm config set state-dir "D:\soft\nodeCache\pnpm\pnpm_state_dir" // pnpm 创建 pnpm-state.json 文件的目录`
+- `pnpm config set cache-dir "D:\soft\nodeCache\pnpm\pnpm_cache" // pnpm 全局缓存路径`
 
-环境变量 path: `D:\soft\nodeCatch\npm\pnpm_bin_dir`
+环境变量 path: `D:\soft\nodeCache\pnpm\pnpm_bin_dir`
