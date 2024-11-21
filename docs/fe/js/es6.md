@@ -112,7 +112,7 @@
 - construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如 new proxy(...args)。
 
 ```js
-var obj = new Proxy({}, {
+let obj = new Proxy({}, {
   get: function (target, propKey, receiver) {
     console.log(`getting ${propKey}!`);
     return Reflect.get(target, propKey, receiver);
@@ -140,19 +140,30 @@ obj.count = 1
 
 13 个方法
 
-- Reflect.apply(target, thisArg, args)
-- Reflect.construct(target, args)
-- Reflect.get(target, name, receiver)
-- Reflect.set(target, name, value, receiver)
-- Reflect.defineProperty(target, name, desc)
-- Reflect.deleteProperty(target, name)
-- Reflect.has(target, name)
-- Reflect.ownKeys(target)
-- Reflect.isExtensible(target)
-- Reflect.preventExtensions(target)
-- Reflect.getOwnPropertyDescriptor(target, name)
-- Reflect.getPrototypeOf(target)
-- Reflect.setPrototypeOf(target, prototype)
+```js
+// 1. 基本对象操作
+Reflect.get(target, propertyKey[, receiver])           // 获取对象属性
+Reflect.set(target, propertyKey, value[, receiver])    // 设置对象属性
+Reflect.has(target, propertyKey)                       // 检查对象是否存在某个属性
+Reflect.deleteProperty(target, propertyKey)            // 删除对象的属性
+Reflect.ownKeys(target)                                // 返回对象的所有属性(包括Symbol)
+
+// 2. 函数操作
+Reflect.apply(target, thisArgument, argumentsList)     // 调用函数
+Reflect.construct(target, argumentsList[, newTarget])  // 对构造函数进行 new 操作
+
+// 3. 原型操作
+Reflect.getPrototypeOf(target)                        // 获取对象原型
+Reflect.setPrototypeOf(target, prototype)             // 设置对象原型
+
+// 4. 属性描述符操作
+Reflect.defineProperty(target, propertyKey, attributes) // 定义对象属性
+Reflect.getOwnPropertyDescriptor(target, propertyKey)   // 获取属性描述符
+
+// 5. 对象可扩展性
+Reflect.preventExtensions(target)                      // 防止对象添加新属性
+Reflect.isExtensible(target)                          // 判断对象是否可扩展
+```
 
 ## Promise
 

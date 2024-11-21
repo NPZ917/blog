@@ -10,12 +10,11 @@
 6. symbol
 7. bigint
 8. Object
-
-- Object
-- Array
-- RegExp
-- Date
-- Function
+   - Object
+   - Array
+   - RegExp
+   - Date
+   - Function
 
 判断数据类型
 
@@ -67,7 +66,6 @@
 
 ## 作用域 & 作用域链
 
-- 作用域是指程序源代码中定义变量的区域。
 - 作用域是指程序源代码中定义变量的区域。
 - 词法作用域 就是静态作用域
 
@@ -407,89 +405,247 @@ const person = myNew(Person, '小明', '12')
 ## 数组扁平化
 
 ```js
-function flat(arr, num = 1) {
+1. flat // ES2019+ 支持
+
+const arr = [1, [2, [3, 4]]]
+
+// 展开一层
+arr.flat() // [1, 2, [3, 4]]
+
+// 展开多层
+arr.flat(2) // [1, 2, 3, 4]
+
+// 展开所有层
+arr.flat(Infinity) // [1, 2, 3, 4]
+
+2. 递归
+function flatten(arr) {
   let result = []
   arr.forEach(item => {
-    if (Array.isArray(item) && num > 0) {
-      result = result.concat(flat(item, num - 1))
-    } else {
-      result.push(item)
-    }
+    if (Array.isArray(item)) result = [...result, ...flatten(item)]
+    else result.push(item)
   })
+  return result
 }
+
+// 使用
+flatten([1, [2, [3, 4]]])  // [1, 2, 3, 4]
+
+3. reduce
+function flatten(arr) {
+  return arr.reduce((prev, curr) => {
+    return prev.concat(Array.isArray(curr) ? flatten(curr) : curr)
+  }, [])
+}
+
+// 使用
+flatten([1, [2, [3, 4]]])  // [1, 2, 3, 4]
 ```
 
 ## 数组字符串对象方法
 
 1. 数组
 
-- shift & unshift
-- pop & push
-- slice & splice
-- join
-- concat
-- reverse
-- sort
-- indexOf
-- forEach map reduce filter some every find findIndex Array.from Array.of Array.isArray
-- keys entries values flat flatMap includes
+```js
+1. 增删改查类方法
+// 增加元素
+push()      // 末尾添加元素，返回新长度
+unshift()   // 开头添加元素，返回新长度
 
-2. 字符串
+// 删除元素
+pop()       // 删除末尾元素，返回被删除项
+shift()     // 删除开头元素，返回被删除项
 
-- slice
-- split
-- concat
-- includes
+// 增删改
+splice()    // 任意位置增删改，返回被删除项数组
 
-3. 对象
+2. 查找和包含类方法
+// 查找元素
+indexOf()     // 查找元素索引(从前往后)
+lastIndexOf() // 查找元素索引(从后往前)
+find()        // 返回第一个满足条件的元素
+findIndex()   // 返回第一个满足条件的元素的索引
+findLast()    // 返回最后一个满足条件的元素
+findLastIndex() // 返回最后一个满足条件的元素的索引
 
--
+// 包含检查
+includes()    // 检查数组是否包含某个值
+
+3. 遍历类方法
+// 遍历
+forEach()     // 遍历数组
+map()         // 映射新数组
+filter()      // 过滤符合条件的元素
+every()       // 是否所有元素都满足条件
+some()        // 是否存在元素满足条件
+
+// 迭代器方法
+entries()     // 返回键值对迭代器
+keys()        // 返回索引迭代器
+values()      // 返回值迭代器
+
+4. 归并类方法
+reduce()      // 从左到右归并
+reduceRight() // 从右到左归并
+
+5. 排序类方法
+sort()        // 排序数组
+reverse()     // 反转数组
+
+6. 转换类方法
+// 数组转字符串
+join()        // 指定分隔符连接
+toString()    // 转换为字符串
+toLocaleString() // 转换为本地字符串
+
+// 数组转换
+flat()        // 扁平化数组
+flatMap()     // 映射后扁平化
+
+7. 复制和合并类方法
+
+// 复制
+slice()       // 浅复制数组的一部分
+copyWithin()  // 复制数组的一部分到同一数组中的另一个位置
+
+// 合并
+concat()      // 合并多个数组
+
+8. 填充类方法
+fill()        // 用固定值填充数组
+
+9. 静态方法
+// 创建数组
+Array.from()    // 从类数组对象或可迭代对象创建数组
+Array.of()      // 将一组值转换为数组
+
+// 类型判断
+Array.isArray() // 判断是否为数组
+
+
+10. 实验性/新特性方法
+// ES2023+
+toReversed()   // 返回反转的新数组(不修改原数组)
+toSorted()     // 返回排序的新数组(不修改原数组)
+toSpliced()    // 返回修改的新数组(不修改原数组)
+with()         // 返回替换指定索引的新数组(不修改原数组)
+```
 
 ```js
-/**
- * string
- *  - substr  开始位置 - 结束位置前一个  左闭右开  不影响原字符串
- *    str.substring(indexStart[, indexEnd])
- *    -- 任意参数为负数，都置为0
-    -- 如果任意参数大于字符串长度，则被当做字符串长度
-    -- 如果indexStart大于indexEnd，则位置调换
-    -- 如果indexStart等于indexEnd，则返回空字符串
-    -- 如果省略indexEnd，则截取到字符串末尾。
-*  - slice   开始位置 - 结束位置前一个  左闭右开   不影响原字符串
-    -- 如果indexStart为负数，则用字符串长度+indexStart代替
-    -- 如果indexEnd为负数，则用字符串长度+endStart代替
-    -- 如果indexEnd小于startEnd，返回空字符串
-    -- 如果省略indexEnd，则截取到字符串末尾
-*/
+1. 对象属性描述符相关
+Object.defineProperty()      // 定义单个属性及其描述符
+Object.defineProperties()    // 定义多个属性及其描述符
+Object.getOwnPropertyDescriptor()    // 获取属性描述符
+Object.getOwnPropertyDescriptors()   // 获取所有属性的描述符
 
-var str = '123456789'
+2. 属性操作
+Object.assign()       // 合并对象
+Object.create()       // 创建新对象，使用现有对象作为新对象的原型
+Object.keys()         // 返回可枚举属性名数组
+Object.values()       // 返回可枚举属性值数组
+Object.entries()      // 返回可枚举属性的[key, value]数组
+Object.fromEntries()  // 将[key, value]数组转换为对象
+Object.getOwnPropertyNames()  // 返回所有自有属性名(包括不可枚举)
+Object.getOwnPropertySymbols() // 返回所有Symbol属性
 
-// console.error('slice---' + str.slice(0, 5))
-// console.error('substring---' + str.substring(0, 5))
-// console.error(str)
-/**
- * Array
- *  - slice  开始位置 - 结束位置前一个 原数组的浅拷贝  
- *    - (在某些情况下修改返回的新数组，会影响原数组)
- *    - array.slice([indexStart[, indexEnd]])
- *      -- 如果省略indexStart，则从0开始；如果省略indexEnd，则截取到数组末尾。
-      -- 如果indexStart为负数，则用数组长度+indexStart代替。
-      -- 如果indexStart超出数组索引范围，则返回空数组。
-      -- 如果indexStart大于indexEnd，则返回空数组。
-      -- 如果indexEnd超出数组索引范围，则截取到数组末尾。
-*  - splice 可以对数组实现增删改操作，会改变原数组；
-    - array.splice(start[, deleteCount[, item1[,item2[, ...]]]])
+3. 对象状态控制
+Object.preventExtensions()  // 防止添加新属性
+Object.seal()              // 封闭对象(不能添加/删除属性，但可以修改现有属性)
+Object.freeze()            // 冻结对象(不能添加/删除/修改属性)
+Object.isExtensible()      // 判断是否可扩展
+Object.isSealed()          // 判断是否封闭
+Object.isFrozen()          // 判断是否冻结
 
-*/
+4. 原型相关
+Object.getPrototypeOf()    // 获取对象的原型
+Object.setPrototypeOf()    // 设置对象的原型
+Object.prototype.hasOwnProperty()    // 判断是否为自有属性
+Object.prototype.isPrototypeOf()     // 判断是否在原型链上
+Object.prototype.propertyIsEnumerable() // 判断属性是否可枚举
 
-let arr = [1, 2, 3, 4]
-// console.error(arr.slice(0, 3))
-// console.error(arr.slice(0))
-// console.error(arr)
+5. 对象转换/检测
+Object.prototype.toString()     // 转换为字符串
+Object.prototype.valueOf()      // 返回对象的原始值
+Object.prototype.toLocaleString() // 转换为本地字符串
+Object.is()                    // 判断两个值是否相同
 
-// console.error(arr.splice(0, 2))
-console.error(arr.splice(0, 0, 5, 6))
-console.error(arr)
+6. 遍历相关
+for...in               // 遍历可枚举属性(包括原型链)
+Object.keys()          // 返回可枚举属性数组
+Object.values()        // 返回可枚举属性值数组
+Object.entries()       // 返回可枚举属性键值对数组
+
+7. 其他
+hasOwn()              // 检查对象是否具有自己的属性(ES2022)
+Object.assign()       // 对象合并
+Object.create(null)   // 创建一个没有原型的对象
+```
+
+```js
+1. 查找/搜索相关
+// 位置查找
+indexOf()      // 返回指定值第一次出现的位置
+lastIndexOf()  // 返回指定值最后一次出现的位置
+search()       // 返回正则表达式匹配的第一个位置
+
+// 内容检查
+includes()     // 判断字符串是否包含指定值
+startsWith()   // 判断是否以指定值开头
+endsWith()     // 判断是否以指定值结尾
+match()        // 正则表达式匹配
+matchAll()     // 返回所有匹配的迭代器
+
+2. 提取/截取相关
+// 截取
+slice(start, end)     // 提取字符串的一部分，支持负索引
+substring(start, end) // 提取字符串的一部分，不支持负索引
+substr(start, length) // 从指定位置提取指定长度(已废弃)
+
+// 分割
+split()        // 将字符串分割成数组
+
+3. 修改/转换相关
+// 大小写转换
+toLowerCase()   // 转小写
+toUpperCase()   // 转大写
+toLocaleLowerCase()  // 根据本地语言转小写
+toLocaleUpperCase()  // 根据本地语言转大写
+
+// 去除空格
+trim()          // 去除两端空格
+trimStart()     // 去除开头空格
+trimEnd()       // 去除结尾空格
+trimLeft()      // 去除左侧空格(同trimStart)
+trimRight()     // 去除右侧空格(同trimEnd)
+
+// 填充
+padStart()      // 开头填充
+padEnd()        // 结尾填充
+
+// 重复
+repeat()        // 重复字符串指定次数
+
+// 替换
+replace()       // 替换第一个匹配项
+replaceAll()    // 替换所有匹配项
+
+4. 字符相关
+// 字符访问
+charAt()        // 返回指定位置的字符
+charCodeAt()    // 返回指定位置的Unicode值
+codePointAt()   // 返回指定位置的码点值
+
+// 字符串拼接
+concat()        // 连接两个或多个字符串
+
+5. 其他方法
+// 转换
+toString()      // 转换为字符串
+valueOf()       // 返回原始值
+
+// 本地化
+localeCompare() // 比较两个字符串在当前语言环境下的顺序
+normalize()     // Unicode 归一化
 ```
 
 ## 防抖节流
@@ -694,6 +850,7 @@ cookie
 
 1. 原型链继承
 
+- 子类的原型指向父类的实例 || 子类.prototype = new 父类()
 - 父类的引用属性会被所有子类实例共享，容易造成属性污染
 
 ```js
