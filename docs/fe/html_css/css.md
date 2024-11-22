@@ -2,10 +2,8 @@
 
 ## 盒子模型
 
-- 标准盒子: 宽度 = 内容的宽度/content + border + padding + margin
-- IE 盒子： 宽度 = 内容的宽度(content + border + padding) + margin
-
-## box-sizing
+- 标准盒: 宽高只包括 content
+- IE 盒： 宽高包括 content + padding + border
 
 盒子模型的解析模式 默认 content-box
 
@@ -189,9 +187,11 @@ class-10 id-100 标签-1000 ！important 最高
 
 - inline 默认 内联
 - none
+- inline-block
 - block
 - table
-- inline-block
+- flex
+- grid
 
 ## position
 
