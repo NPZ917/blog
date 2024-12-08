@@ -20,27 +20,27 @@
 
 1. typeof
 
-- 基础类型(null - object) `不同的对象再底层都表示为二进制，js中二进制前三位都为0的化会被判断为object，null的二进制表示全是0`
-- 引用类型除 function 外 => object
+   - 基础类型(null - object) `不同的对象再底层都表示为二进制，js中二进制前三位都为0的化会被判断为object，null的二进制表示全是0`
+   - 引用类型除 function 外 => object
 
 2. constructor
 
-- null 和 undefined 没有 constructor
-- 判断数字时使用(),比如 (123).constructor,如果写成 123.constructor 会报错
-- constructor 在类继承时会出错,因为 Object 被覆盖掉了,检测结果就不对了
+   - null 和 undefined 没有 constructor
+   - 判断数字时使用(),比如 (123).constructor,如果写成 123.constructor 会报错
+   - constructor 在类继承时会出错,因为 Object 被覆盖掉了,检测结果就不对了
 
 3. instanceof
 
-- A instanceof B 判断 A 是否为 B 的实例
-- 适合判断引用数据类型，基本数据类型全返回 false
-- null instanceof Object -> false
-- [1,2,3] instanceof Array -> true
+   - A instanceof B 判断 A 是否为 B 的实例
+   - 适合判断引用数据类型，基本数据类型全返回 false
+   - null instanceof Object -> false
+   - [1,2,3] instanceof Array -> true
 
 4. Object.prototype.toString.call(target)
 
-- 对 toString()方法进行函数借用可以对全部类型进行判断。
-- Object.prototype.toString 可以返回当前调用者的对象类型。`[object, [[clas]]]`
-- 加 call 因为 Object.prototype.toString()返回的是调用者的类型。不论你 toString()本身的入参写的是什么，在 Object.prototype.toString()中，他的调用者永远都是 Object.prototype;所以，在不加 call()情况下，我们的出来的结果永远都是 '[object Object]'
+   - 对 toString()方法进行函数借用可以对全部类型进行判断。
+   - Object.prototype.toString 可以返回当前调用者的对象类型。`[object, [[clas]]]`
+   - 加 call 因为 Object.prototype.toString()返回的是调用者的类型。不论你 toString()本身的入参写的是什么，在 Object.prototype.toString()中，他的调用者永远都是 Object.prototype;所以，在不加 call()情况下，我们的出来的结果永远都是 '[object Object]'
 
 ## 原型 & 原型链
 

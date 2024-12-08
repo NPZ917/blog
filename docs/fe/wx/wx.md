@@ -146,3 +146,57 @@ methods: {
      点击生成签名
 
 6. 把得到的签名放到 wx.config 配置对象中
+
+## 发布新版本后提示用户强制更新
+
+内地调试 编译模式-编译设置(下次编译) 勾选
+
+```js
+function checkUpdateVersion() {
+	wx.showLoading({
+		mask: true
+	})
+	//判断微信版本是否 兼容小程序更新机制API的使用
+	if (wx.canIUse('getUpdateManager')) {
+		const updateManager = wx.getUpdateManager();
+		//检测版本更新
+		updateManager.onCheckForUpdate(function (res) {
+			if (res.hasUpdate) {
+				updateManager.onUpdateReady(function () {
+					wx.hideLoading()
+					wx.showModal({
+						title: '提示',
+						content: '检测到新版本，是否重启小程序？',
+						showCancel: false,
+						success: function (res) {
+							if (res.confirm) {
+								// 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+								updateManager.applyUpdate()
+							}
+						}
+					})
+				})
+				updateManager.onUpdateFailed(function () {
+					wx.hideLoading()
+					// 新版本下载失败
+					wx.showModal({
+						title: '已有新版本',
+						content: '请您删除小程序，重新搜索进入',
+					})
+				})
+			} else wx.hideLoading()
+		})
+	} else {
+		wx.hideLoading()
+		wx.showModal({
+			title: '溫馨提示',
+			content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+		})
+	}
+}
+
+onLaunch: function () {
+	checkUpdateVersion()
+}
+
+```
